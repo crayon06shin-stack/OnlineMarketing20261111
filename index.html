@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f5f0">
+  <meta name="description" content="林澄的設計作品集。以清晰的策略與細膩的介面，讓複雜的產品變得直覺。">
+  <title>林澄 — 數位產品設計師</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Serif+TC:wght@500;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f6f5f0;
+      --ink: #1e2421;
+      --muted: #727773;
+      --line: #d9dbd4;
+      --green: #2f604b;
+      --lime: #d8f278;
+      --coral: #e8755d;
+      --serif: "Noto Serif TC", Georgia, serif;
+      --sans: "DM Sans", "Noto Serif TC", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    .shell { width: min(1320px, calc(100% - 96px)); margin: 0 auto; }
+    .topbar {
+      height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--line);
+    }
+    .wordmark { display: flex; align-items: center; gap: 12px; font-size: 15px; font-weight: 700; }
+    .mark {
+      display: grid;
+      width: 34px;
+      height: 34px;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--green);
+      color: var(--paper);
+      font: 700 16px var(--serif);
+    }
+    .nav { display: flex; align-items: center; gap: 36px; font-size: 13px; }
+    .nav a { transition: color .2s ease; }
+    .nav a:hover { color: var(--green); }
+    .nav .contact-link { display: flex; align-items: center; gap: 9px; font-weight: 600; }
+    .contact-link svg { width: 15px; height: 15px; }
+    .hero {
+      min-height: 610px;
+      padding: 66px 0 74px;
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      align-items: center;
+      gap: 5.5%;
+    }
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 25px;
+      color: var(--green);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { content: ""; width: 23px; height: 1px; background: currentColor; }
+    h1 {
+      max-width: 700px;
+      margin: 0;
+      font: 900 clamp(48px, 5.5vw, 78px)/1.28 var(--serif);
+      letter-spacing: 0;
+    }
+    h1 span { color: var(--green); }
+    .intro {
+      max-width: 440px;
+      margin: 22px 0 30px;
+      color: #5e6560;
+      font-size: 15px;
+      line-height: 1.95;
+    }
+    .hero-actions { display: flex; align-items: center; gap: 24px; }
+    .primary-link {
+      display: inline-flex;
+      min-height: 48px;
+      align-items: center;
+      gap: 12px;
+      padding: 0 19px;
+      background: var(--green);
+      color: white;
+      font-size: 13px;
+      font-weight: 600;
+      transition: background .2s ease, transform .2s ease;
+    }
+    .primary-link:hover { background: #244b3a; transform: translateY(-2px); }
+    .primary-link svg, .text-link svg { width: 16px; height: 16px; }
+    .text-link { display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; }
+    .hero-art { position: relative; min-width: 0; }
+    .portrait {
+      position: relative;
+      height: 430px;
+      overflow: hidden;
+      background: #b7c8b7;
+    }
+    .portrait img { width: 100%; height: 100%; object-fit: cover; object-position: center 44%; display: block; }
+    .image-caption {
+      position: absolute;
+      right: 15px;
+      bottom: 15px;
+      padding: 8px 11px;
+      background: var(--paper);
+      color: var(--ink);
+      font-size: 10px;
+    }
+    .sticker {
+      position: absolute;
+      top: 31px;
+      left: -31px;
+      display: grid;
+      width: 83px;
+      height: 83px;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--lime);
+      color: var(--ink);
+      text-align: center;
+      font-size: 10px;
+      font-weight: 700;
+      line-height: 1.5;
+      transform: rotate(-11deg);
+    }
+    .hero-note {
+      position: absolute;
+      right: -24px;
+      bottom: 50px;
+      width: 150px;
+      padding: 15px 16px;
+      background: var(--coral);
+      color: #251f1c;
+      font: 600 12px/1.65 var(--serif);
+      transform: rotate(3deg);
+    }
+    .hero-note span { display: block; margin-top: 6px; font: 500 9px var(--sans); }
+    .meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 11px;
+    }
+    .availability { display: flex; align-items: center; gap: 9px; color: var(--ink); font-weight: 600; }
+    .availability::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #80a85c; box-shadow: 0 0 0 4px #80a85c22; }
+    .work { padding: 86px 0 100px; }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; margin-bottom: 28px; }
+    .section-heading h2 { margin: 0; font: 700 30px/1.35 var(--serif); }
+    .section-heading p { margin: 8px 0 0; color: var(--muted); font-size: 12px; }
+    .all-work { display: inline-flex; align-items: center; gap: 8px; padding-bottom: 5px; font-size: 12px; font-weight: 600; }
+    .projects { display: grid; grid-template-columns: 1.15fr .85fr; gap: 22px; }
+    .project { min-width: 0; }
+    .project-image { position: relative; height: 300px; overflow: hidden; background: #e4e6df; }
+    .project-image img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .45s ease; }
+    .project:hover .project-image img { transform: scale(1.035); }
+    .project-tag { position: absolute; top: 14px; left: 14px; padding: 7px 10px; background: var(--paper); font-size: 10px; }
+    .project-info { display: flex; align-items: start; justify-content: space-between; padding-top: 14px; }
+    .project-info h3 { margin: 0; font: 600 17px var(--serif); }
+    .project-info p { margin: 5px 0 0; color: var(--muted); font-size: 11px; }
+    .project-arrow { display: grid; width: 34px; height: 34px; place-items: center; border: 1px solid var(--line); border-radius: 50%; }
+    .project-arrow svg { width: 15px; height: 15px; }
+    footer { border-top: 1px solid var(--line); }
+    .footer-inner { min-height: 86px; display: flex; align-items: center; justify-content: space-between; color: var(--muted); font-size: 10px; }
+    .socials { display: flex; gap: 22px; color: var(--ink); font-size: 11px; }
+    .reveal { animation: rise .75s both; }
+    .reveal-delay { animation-delay: .12s; }
+    @keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 850px) {
+      .shell { width: min(100% - 48px, 680px); }
+      .hero { min-height: 0; padding: 58px 0 52px; grid-template-columns: 1fr; gap: 43px; }
+      .hero-copy { max-width: 620px; }
+      .hero-art { width: min(90%, 520px); margin: 0 auto; }
+      .portrait { height: min(65vw, 390px); }
+      .sticker { left: -24px; }
+      .hero-note { right: -26px; bottom: 30px; }
+      .projects { grid-template-columns: 1fr 1fr; gap: 15px; }
+      .project-image { height: 230px; }
+      .work { padding: 67px 0 78px; }
+    }
+    @media (max-width: 560px) {
+      .shell { width: calc(100% - 40px); }
+      .topbar { height: 68px; }
+      .nav { gap: 18px; font-size: 11px; }
+      .nav a:nth-child(2) { display: none; }
+      .wordmark { font-size: 13px; }
+      .mark { width: 31px; height: 31px; }
+      .hero { padding: 50px 0 43px; gap: 35px; }
+      .eyebrow { margin-bottom: 17px; }
+      h1 { font-size: clamp(42px, 11vw, 58px); line-height: 1.33; }
+      .intro { margin: 16px 0 24px; font-size: 13px; }
+      .hero-actions { gap: 17px; }
+      .primary-link { min-height: 44px; padding: 0 14px; font-size: 11px; }
+      .text-link { font-size: 11px; }
+      .hero-art { width: calc(100% - 14px); margin-left: 4px; }
+      .portrait { height: 70vw; min-height: 245px; max-height: 340px; }
+      .sticker { left: -14px; width: 68px; height: 68px; font-size: 9px; }
+      .hero-note { right: -10px; bottom: 22px; width: 126px; padding: 11px 12px; font-size: 10px; }
+      .meta-row { gap: 15px; font-size: 9px; }
+      .availability { font-size: 9px; }
+      .work { padding: 56px 0 62px; }
+      .section-heading { align-items: start; }
+      .section-heading h2 { font-size: 25px; }
+      .all-work { font-size: 10px; white-space: nowrap; }
+      .projects { grid-template-columns: 1fr; gap: 27px; }
+      .project-image { height: 58vw; min-height: 210px; max-height: 320px; }
+      .footer-inner { min-height: 76px; gap: 14px; font-size: 9px; }
+      .socials { gap: 12px; font-size: 10px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="shell topbar">
+    <a class="wordmark" href="#top" aria-label="林澄首頁">
+      <span class="mark" aria-hidden="true">澄</span>
+      <span>林澄 <span style="font-weight:400;color:#727773">/ 設計師</span></span>
+    </a>
+    <nav class="nav" aria-label="主要導覽">
+      <a href="#work">精選作品</a>
+      <a href="#about">關於我</a>
+      <a class="contact-link" href="mailto:hello@chenglin.design">聯絡我
+        <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11m-5-5 5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </nav>
+  </header>
+
+  <main id="top" class="shell">
+    <section class="hero" id="about">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">Digital product designer · Taipei</p>
+        <h1>把複雜的事，<br><span>設計得剛剛好。</span></h1>
+        <p class="intro">我是林澄，專注數位產品與服務體驗。從釐清問題開始，和團隊一起把好點子，變成清楚、好用、讓人記得的產品。</p>
+        <div class="hero-actions">
+          <a class="primary-link" href="#work">看看我的作品
+            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h11m-5-5 5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="text-link" href="mailto:hello@chenglin.design">聊聊合作 <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+      <div class="hero-art reveal reveal-delay">
+        <div class="portrait">
+          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=85" alt="陽光照進工作桌，桌上有筆電與設計工具">
+          <span class="image-caption">工作現場，台北 · 2026</span>
+        </div>
+        <div class="sticker">好奇心<br>持續在線</div>
+        <div class="hero-note">好的設計，讓事情自然發生。<span>— 設計練習日常</span></div>
+      </div>
+    </section>
+
+    <div class="meta-row">
+      <span class="availability">開放新合作</span>
+      <span>策略 · 產品設計 · 原型</span>
+      <span>目前在台北工作</span>
+    </div>
+
+    <section class="work" id="work">
+      <div class="section-heading">
+        <div>
+          <h2>最近的作品</h2>
+          <p>把想法做成真實體驗的幾個片段。</p>
+        </div>
+        <a class="all-work" href="mailto:hello@chenglin.design">索取完整作品集 <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="projects">
+        <a class="project" href="mailto:hello@chenglin.design?subject=拾日%20案例">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1200&q=85" alt="團隊共同討論數位產品的使用情境" loading="lazy">
+            <span class="project-tag">產品體驗 · 2025</span>
+          </div>
+          <div class="project-info">
+            <div><h3>拾日｜把日常整理得更輕鬆</h3><p>從使用者研究到行動服務的體驗重整</p></div>
+            <span class="project-arrow" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M5 15 15 5M6 5h9v9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </div>
+        </a>
+        <a class="project" href="mailto:hello@chenglin.design?subject=好日子%20案例">
+          <div class="project-image">
+            <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1000&q=85" alt="色彩明快的品牌與數位介面設計作品" loading="lazy">
+            <span class="project-tag">品牌數位化 · 2024</span>
+          </div>
+          <div class="project-info">
+            <div><h3>好日子｜讓地方品牌被看見</h3><p>品牌識別延伸與電商服務設計</p></div>
+            <span class="project-arrow" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none"><path d="M5 15 15 5M6 5h9v9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          </div>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="shell footer-inner">
+      <span>© 2026 林澄 · 用心設計，慢慢更新</span>
+      <div class="socials"><a href="mailto:hello@chenglin.design">Email</a><a href="#top">Back to top ↑</a></div>
+    </div>
+  </footer>
+</body>
+</html>
